@@ -217,14 +217,13 @@ The system implements a centralized error handling mechanism with:
 - Custom error classes
 - HTTP status code mapping
 - Consistent error response format
-- Detailed logging
+- Detailed logging (locally in a logs folder)
 
 ## Development
 
 ### Available Scripts
 - `npm run dev` - Start development server with hot reload
 - `npm run build` - Build the TypeScript code
-- `npm start` - Start the production server
 - `npm run lint` - Run linting
 - `npm test` - Run tests (when implemented)
 
@@ -272,16 +271,6 @@ The `main` branch is protected and requires pull requests for all changes:
 4. Create a Pull Request on GitHub
 5. Wait for code review and approval
 6. Once approved and checks pass, merge your PR
-
-### Commit Message Convention
-We follow the conventional commits specification:
-- `feat:` - New features
-- `fix:` - Bug fixes
-- `docs:` - Documentation changes
-- `style:` - Code style changes (formatting, etc)
-- `refactor:` - Code refactoring
-- `test:` - Adding or updating tests
-- `chore:` - Maintenance tasks
 
 ## Contributing
 
