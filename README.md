@@ -78,6 +78,104 @@ A TypeScript-based REST API for managing and organizing prompts with features li
 - `GET /prompts/recent` - Get recent prompts
 - `POST /prompts/:id/clone` - Clone a prompt
 
+## Data Schema
+
+### Prompt Schema
+```typescript
+{
+  title: {
+    type: String,
+    required: true,
+    index: true     // Indexed for faster search
+  },
+  body: {
+    type: String,
+    required: true
+  },
+  category: {
+    type: String,
+    required: true,
+    index: true     // Indexed for faster filtering
+  },
+  created_by: {
+    type: String,
+    required: true
+  },
+  created_at: {
+    type: Date,
+    default: Date.now
+  },
+  updated_at: {
+    type: Date,
+    default: Date.now
+  }
+}
+```
+
+## API Examples
+
+### Create a New Prompt
+```bash
+curl -X POST http://localhost:3000/prompts \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Creative Writing Assistant",
+    "body": "You are a creative writing assistant...",
+    "category": "writing",
+    "created_by": "user123"
+  }'
+```
+
+### Get All Prompts
+```bash
+curl http://localhost:3000/prompts
+```
+
+### Get Prompts by Category
+```bash
+curl http://localhost:3000/prompts?category=writing
+```
+
+### Search Prompts
+```bash
+curl http://localhost:3000/prompts/search?q=creative
+```
+
+### Get Recent Prompts
+```bash
+curl http://localhost:3000/prompts/recent
+```
+
+### Get Specific Prompt
+```bash
+curl http://localhost:3000/prompts/64f5a53d9d312a1234567890
+```
+
+### Update a Prompt
+```bash
+curl -X PUT http://localhost:3000/prompts/64f5a53d9d312a1234567890 \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Updated Creative Writing Assistant",
+    "body": "Updated prompt content...",
+    "category": "writing"
+  }'
+```
+
+### Clone a Prompt
+```bash
+curl -X POST http://localhost:3000/prompts/64f5a53d9d312a1234567890/clone \
+  -H "Content-Type: application/json" \
+  -d '{
+    "title": "Creative Writing Assistant V2"
+  }'
+```
+
+### Delete a Prompt
+```bash
+curl -X DELETE http://localhost:3000/prompts/64f5a53d9d312a1234567890
+```
+
 ## Request/Response Format
 
 ### Create/Update Prompt
