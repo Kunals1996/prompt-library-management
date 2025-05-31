@@ -5,6 +5,7 @@ import promptRoutes from './routes/prompt.routes';
 import connectDB from './utils/db';
 import logger from './utils/logger';
 import mongoose from 'mongoose';
+import { errorHandler } from './middleware/errorHandler';
 
 dotenv.config();
 
@@ -17,6 +18,9 @@ app.use(express.json());
 
 // Routes
 app.use('/api/prompts', promptRoutes);
+
+// Error handling middleware
+app.use(errorHandler);
 
 let server: any;
 

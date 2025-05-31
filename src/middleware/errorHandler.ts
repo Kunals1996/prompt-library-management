@@ -1,8 +1,8 @@
-import { Request, Response, NextFunction } from 'express';
+import { Request, Response, NextFunction, ErrorRequestHandler } from 'express';
 import { AppError } from '../utils/errors';
 import logger from '../utils/logger';
 
-export const errorHandler = (
+export const errorHandler: ErrorRequestHandler = (
   err: Error,
   req: Request,
   res: Response,
@@ -15,10 +15,11 @@ export const errorHandler = (
       stack: err.stack
     });
 
-    return res.status(err.statusCode).json({
+    res.status(err.statusCode).json({
       success: false,
       message: err.message
     });
+    return;
   }
 
   // Programming or unknown errors
@@ -27,7 +28,7 @@ export const errorHandler = (
     stack: err.stack
   });
 
-  return res.status(500).json({
+  res.status(500).json({
     success: false,
     message: 'Something went wrong'
   });

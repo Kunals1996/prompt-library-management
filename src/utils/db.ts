@@ -42,7 +42,7 @@ const connectDB = async (retryCount = 0): Promise<void> => {
 
     // Listen for disconnection
     mongoose.connection.on('disconnected', () => {
-      logger.warn('MongoDB disconnected. Attempting to reconnect...');
+      logger.warn('MongoDB disconnected.');
     });
 
     // Listen for reconnection
