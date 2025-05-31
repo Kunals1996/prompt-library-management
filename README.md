@@ -241,6 +241,48 @@ src/
 └── constants/       # Constants and configurations
 ```
 
+## Development Workflow
+
+### Branch Protection
+The `main` branch is protected and requires pull requests for all changes:
+- Direct pushes to `main` are not allowed
+- Pull requests require at least one review
+- Branches must be up to date with `main` before merging
+- Status checks must pass before merging
+
+### Development Process
+1. Create a new branch for your feature/fix:
+   ```bash
+   git checkout -b feature/your-feature-name
+   # or
+   git checkout -b fix/your-fix-name
+   ```
+
+2. Make your changes and commit them:
+   ```bash
+   git add .
+   git commit -m "feat/fix: your descriptive commit message"
+   ```
+
+3. Push your branch:
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+4. Create a Pull Request on GitHub
+5. Wait for code review and approval
+6. Once approved and checks pass, merge your PR
+
+### Commit Message Convention
+We follow the conventional commits specification:
+- `feat:` - New features
+- `fix:` - Bug fixes
+- `docs:` - Documentation changes
+- `style:` - Code style changes (formatting, etc)
+- `refactor:` - Code refactoring
+- `test:` - Adding or updating tests
+- `chore:` - Maintenance tasks
+
 ## Contributing
 
 1. Fork the repository
